@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sys1-engine"
+version = "0.1.0"
+description = "Stateful & Self-Routing System One Decision Engine (Jev+)"
+readme = "README.md"
+authors = [{ name = "ichor-hash", email = "adhiyamansrinivasan@gmail.com" }]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = [
+    "system-one",
+    "agent-routing",
+    "onnxruntime",
+    "recurrent-memory",
+    "guardrails",
+    "uncertainty-estimation",
+    "low-latency",
+]
+requires-python = ">=3.9"
+
+# Core lightweight inference dependencies (CPU-only, sub-15ms, zero PyTorch overhead)
+dependencies = [
+    "numpy>=1.22.0",
+    "onnxruntime>=1.16.0",
+    "tokenizers>=0.14.0",
+]
+
+[project.optional-dependencies]
+# Training & Distillation (Colab / GPU environments)
+train = [
+    "torch>=2.1.0",
+    "transformers>=4.38.0",
+    "scipy>=1.10.0",
+    "tqdm>=4.65.0",
+    "onnx>=1.15.0",
+    "openai>=1.12.0",
+    "anthropic>=0.18.0",
+]
+
+# Interactive Demo & Visualization
+demo = [
+    "gradio>=4.20.0",
+    "matplotlib>=3.7.0",
+]
+
+# Development & Testing
+dev = [
+    "pytest>=7.4.0",
+    "pytest-benchmark>=4.0.0",
+    "ruff>=0.3.0",
+]
+
+# Full bundle
+all = [
+    "sys1-engine[train,demo,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/ichor-hash/system-one-engine"
+Documentation = "https://github.com/ichor-hash/system-one-engine#readme"
+Repository = "https://github.com/ichor-hash/system-one-engine"
+"Hugging Face" = "https://huggingface.co/ichor-hash/sys1-engine"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

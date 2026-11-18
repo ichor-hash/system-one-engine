@@ -1,0 +1,2 @@
+# Exported ONNX models and tokenizer artifacts belong here
+# e.g., sys1_fp32.onnx, sys1_int8.onnx, tokenizer.json
